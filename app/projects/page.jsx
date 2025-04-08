@@ -10,6 +10,12 @@ import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 
 
+
+export const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+export const withBasePath = (path) => `${basePath}${path}`;
+
+
+
 const projectList = [
   {
     projectLink: 'https://recesspickleball.com/',
@@ -147,7 +153,7 @@ const Projects = () => {
                       {/* { project.number} */}
                       <Parallax speed={1.5} className={`absolute inset-0 w-full h-full scale-[${project.bgScale}] ${project.bgOrigin}`}>
                         <Image
-                          src={`/images/${project.parallaxBgImg}`}
+                          src={withBasePath(`/images/${project.parallaxBgImg}`)}
                           className='w-full h-full object-cover transition-transform duration-[1200ms] ease-in-out group-hover:scale-105'
                           // style={project.blur && { filter: "blur(1px)" }}
                           width={1500}
@@ -158,7 +164,7 @@ const Projects = () => {
 
                       {project.mockupImg && 
                       <Image
-                          src={`/images/${project.mockupImg}`}
+                          src={withBasePath(`/images/${project.mockupImg}`)}
                           className='w-full h-full object-contain z-10 relative rounded-[10px] floatUpDown'
                           // style={{animation: `floatUpDown ${Math.random() * 5 + 3}s ease-in-out infinite`}}
                           width={1500}

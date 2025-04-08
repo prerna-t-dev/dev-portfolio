@@ -235,7 +235,7 @@ const Projects = () => {
                             <div className="aspect-[1/0.9] bg-gradient-to-b from-[#b3a2c7] via-[#f2a1b3] to-[#0a0a0a] rounded-xl lg:rounded-3xl flex items-center justify-center px-4 lg:px-16 relative overflow-hidden">
                               <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
                                 <Image
-                                  src={`/images/${featuredProject.parallaxBgImg}`}
+                                  src={`${basePath}/images/${featuredProject.parallaxBgImg}`}
                                   className='w-full'
                                   width={500}
                                   height={500}
@@ -252,7 +252,7 @@ const Projects = () => {
                                 preload="auto"
                                 
                               >
-                                <source  src={`/videos/${featuredProject.projectVideoClip}`} type="video/mp4" />
+                                <source  src={`${basePath}/videos/${featuredProject.projectVideoClip}`} type="video/mp4" />
                                 Your browser does not support the video tag.
                               </video>  
 
