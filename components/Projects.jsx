@@ -9,6 +9,10 @@ import useMouse from "@react-hook/mouse-position";
 import { useMediaQuery } from "react-responsive";
 import { useTransform, useScroll, motion } from 'framer-motion';
 
+export const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+export const withBasePath = (path) => `${basePath}${path}`;
+
+
 
 const featuredProjects = [
   {
@@ -292,7 +296,7 @@ const Projects = () => {
 
           <div className="relative w-fit mx-auto mt-20 group">
             <a 
-              href="/projects" 
+              href={withBasePath("/projects.html")}
               className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block text-center relative z-10"
             >
               View More 
