@@ -4,6 +4,12 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useLenis } from 'lenis/react'
 import Link from 'next/link'
 
+
+export const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+export const withBasePath = (path) => `${basePath}${path}`;
+
+
+
 const Navbar = () => {
   const router = useRouter()
   const pathname = usePathname() // Get the current path
@@ -35,7 +41,8 @@ const Navbar = () => {
     <div id="pf--navbar" className="lg:fixed w-full top-0 left-0 px-6 lg:px-14 py-8 lg:py-10 z-[100]">
       <div className="flex items-center justify-between font-general">
 
-        <a href="/" className="relative inline-block hover:opacity-80 transition">
+      <Link href="/" scroll={true}>
+        <a className="relative inline-block hover:opacity-80 transition">
           <p className="font-semibold text-3xl leading-none flex items-center gap-1 from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent">
             <span className="font-semibold text-xl text-secondary-700_">&lt;</span>
             <span className="">pt</span>
@@ -45,6 +52,8 @@ const Navbar = () => {
             Dev.
           </span>
         </a>
+      </Link>
+
 
         {/* Navigation Links */}
         <ul className="hidden lg:flex gap-6 items-center font-medium from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent">
