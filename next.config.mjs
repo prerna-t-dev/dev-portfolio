@@ -1,13 +1,11 @@
-const isProd = process.env.NODE_ENV === 'production';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  trailingSlash: true,
+  basePath: '/dev-portfolio',
+  assetPrefix: '/dev-portfolio/',
   images: {
-    unoptimized: true,
+    unoptimized: true, // <-- required for static export
   },
-  basePath: isProd ? '/dev-portfolio' : '', // ← 👈 Only set basePath in production
 };
 
 export default nextConfig;
