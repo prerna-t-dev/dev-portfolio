@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   output: 'export',
-  basePath: '/dev-portfolio',
-  assetPrefix: '/dev-portfolio/',
+  basePath: isProd ? '/dev-portfolio' : '',
+  assetPrefix: isProd ? '/dev-portfolio/' : '',
   images: {
-    unoptimized: true, // <-- required for static export
+    unoptimized: true,
   },
 };
 
