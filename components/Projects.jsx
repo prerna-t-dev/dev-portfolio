@@ -19,7 +19,7 @@ const featuredProjects = [
     number: '01',
     projectLink: 'https://counterculturecoffee.com/',
     parallaxBgImg: 'test-img-2.webp',
-    projectVideoClip: withBasePath('/CCC-homepage.mp4'),
+    projectVideoClip: 'CCC-homepage.mp4',
     projectHeader: 'Counter Culture Coffee',
     projectDescription: 'Sustainability focussed Premium Coffee Subscriptions',
     tags: [
@@ -35,7 +35,7 @@ const featuredProjects = [
     number: '02',
     projectLink: 'https://onpargolf.com/',
     parallaxBgImg: 'test-img.webp',
-    projectVideoClip: withBasePath('/OnPar-homepage.mp4'),
+    projectVideoClip: 'OnPar-homepage.mp4',
     projectHeader: 'On Par Golf',
     projectDescription: 'High Performance Trendy Goft Attire',
     tags: [
@@ -48,7 +48,7 @@ const featuredProjects = [
     number: '03',
     projectLink: '',
     parallaxBgImg: 'test-img-3.webp',
-    projectVideoClip: withBasePath('/SNE-Bundle-Builder.mp4'),
+    projectVideoClip: 'SNE-Bundle-Builder.mp4',
     projectHeader: 'Sketch & Etch',
     projectDescription: 'Fully Customizable Custom Built Neon Signs',
     tags: [
@@ -62,7 +62,7 @@ const featuredProjects = [
     number: '04',
     projectLink: 'https://houndstoothsc.com/',
     parallaxBgImg: 'test-img-4.webp',
-    projectVideoClip: withBasePath('/HT-homepage.mp4'),
+    projectVideoClip: '/HT-homepage.mp4',
     projectHeader: 'Houndstooth Strategic Comm.',
     projectDescription: 'Award Winning Design and Development Studio',
     tags: [
@@ -76,7 +76,7 @@ const featuredProjects = [
     number: '05',
     projectLink: 'https://counterculturecoffee.com/pages/transparency-report',
     parallaxBgImg: 'test-img-5.webp',
-    projectVideoClip: withBasePath('/CCC-TR.mp4'),
+    projectVideoClip: '/CCC-TR.mp4',
     projectHeader: 'Counter Culture - Transparency Report 2023',
     projectDescription: 'Counter Culture Coffee\'s Award-Winning Landing Page documenting Sustainability Practices',
     tags: [
