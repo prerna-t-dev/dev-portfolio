@@ -41,7 +41,7 @@ const Navbar = () => {
     <div id="pf--navbar" className="lg:fixed w-full top-0 left-0 px-6 lg:px-14 py-8 lg:py-10 z-[100]">
       <div className="flex items-center justify-between font-general">
 
-      <Link href="/" scroll={true}>
+      {/* <Link href="/" scroll={true}>
         <a className="relative inline-block hover:opacity-80 transition">
           <p className="font-semibold text-3xl leading-none flex items-center gap-1 from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent">
             <span className="font-semibold text-xl text-secondary-700_">&lt;</span>
@@ -52,7 +52,22 @@ const Navbar = () => {
             Dev.
           </span>
         </a>
+      </Link> */}
+      <Link
+        href="/"
+        scroll={true}
+        className="relative inline-block hover:opacity-80 transition"
+      >
+        <p className="font-semibold text-3xl leading-none flex items-center gap-1 from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent">
+          <span className="font-semibold text-xl text-secondary-700_">&lt;</span>
+          <span className="">pt</span>
+          <span className="font-semibold text-xl text-secondary-700_"> /&gt;</span>
+        </p>
+        <span className="absolute text-[9px] font-medium top-[-6px] left-0 text-secondary-500">
+          Dev.
+        </span>
       </Link>
+
 
 
         {/* Navigation Links */}
