@@ -53,7 +53,7 @@ export default function Contact() {
                         <br />
                     </span>
             
-                Beyond coding, I enjoy reading, biking, and exploring new technologies. I&apos;m also a fan of making Ghibli-inspired paintings—a fun way to unwind and tap into my creative side.
+                Beyond coding, I enjoy reading, biking, and exploring new technologies. I also enjoy painting—it&apos;s my favorite way to unwind and spark creativity.
                                 
                 </p>
 

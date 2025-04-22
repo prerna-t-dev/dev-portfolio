@@ -62,9 +62,9 @@ const featuredProjects = [
     number: '04',
     projectLink: 'https://houndstoothsc.com/',
     parallaxBgImg: 'test-img-4.webp',
-    projectVideoClip: 'HT-homepage.mp4',
+    projectVideoClip: 'HT-Homepage.mp4',
     projectHeader: 'Houndstooth Strategic Comm.',
-    projectDescription: 'Award Winning Design and Development Studio',
+    projectDescription: 'Award Winning Design and Development Studio Website',
     tags: [
       'HTML',
       'CSS',
@@ -74,11 +74,11 @@ const featuredProjects = [
   },
   {
     number: '05',
-    projectLink: 'https://counterculturecoffee.com/pages/transparency-report',
+    projectLink: 'https://counterculturecoffee.com/pages/transparency-report-2023',
     parallaxBgImg: 'test-img-5.webp',
     projectVideoClip: 'CCC-TR.mp4',
     projectHeader: 'Counter Culture - Transparency Report 2023',
-    projectDescription: 'Counter Culture Coffee\'s Award-Winning Landing Page documenting Sustainability Practices',
+    projectDescription: 'Counter Culture Coffee\'s Award-Winning Landing Page documenting their Sustainability Practices',
     tags: [
       'Liquid',
       'Tailwind',
@@ -296,7 +296,7 @@ const Projects = () => {
 
           <div className="relative w-fit mx-auto mt-20 group">
             <a 
-              href={withBasePath("/projects.html")}
+              href={withBasePath("/projects")}
               className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block text-center relative z-10"
             >
               View More 

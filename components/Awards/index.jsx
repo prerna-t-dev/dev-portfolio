@@ -7,6 +7,9 @@ import gsap from 'gsap';
 import Image from 'next/image';
 import Award from './components/award';
 
+export const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+export const withBasePath = (path) => `${basePath}${path}`;
+
 const awards = [
   {
     title: "CSS Site of the Day",
@@ -100,7 +103,7 @@ const Awards = () => {
                           const { src, color } = award
                           return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
                               <Image 
-                              src={`/images/${src}`}
+                              src={`${basePath}/images/${src}`}
                               width={300}
                               height={0}
                               alt="image"
