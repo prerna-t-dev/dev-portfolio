@@ -7,9 +7,9 @@ const Footer = () => {
             This Portfolio is created using <span className="font-medium text-secondary-500">Next.js</span>, <span className="font-medium text-secondary-500">Tailwind CSS</span>, <span className="font-medium text-secondary-500">GSAP</span> and <span className="font-medium text-secondary-500">Framer Motion</span> 
         </p>
         <p className="text-center text-secondary-300 mt-0">
-        &copy;
-        2024    
+          &copy; {new Date().getFullYear()}
         </p>
+
     </div>
   )
 }
