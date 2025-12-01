@@ -40,7 +40,6 @@ const featuredProjects = [
     projectDescription: 'High Performance Trendy Goft Attire',
     tags: [
       'Liquid',
-      'Tailwind',
       'jQuery'
     ]
   },
