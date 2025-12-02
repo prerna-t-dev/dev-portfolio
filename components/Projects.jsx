@@ -9,7 +9,7 @@ import useMouse from "@react-hook/mouse-position";
 import { useMediaQuery } from "react-responsive";
 import { useTransform, useScroll, motion } from 'framer-motion';
 
-export const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+export const basePath = (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_USE_CUSTOM_DOMAIN !== "true") ? "/dev-portfolio" : "";
 export const withBasePath = (path) => `${basePath}${path}`;
 
 
@@ -294,13 +294,13 @@ const Projects = () => {
 
 
           <div className="relative w-fit mx-auto mt-20 group">
-            <a 
-              href={withBasePath("/projects")}
+            <Link 
+              href="/projects"
               className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block text-center relative z-10"
             >
               View More 
 
-            </a>
+            </Link>
             <span 
               className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue transition-all duration-500 w-full group-hover:w-0 z-0"
             ></span>

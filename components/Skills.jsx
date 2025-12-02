@@ -15,7 +15,7 @@ const techStack = [
     }
 ]
 
-const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+const basePath = (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_USE_CUSTOM_DOMAIN !== "true") ? "/dev-portfolio" : "";
 const withBasePath = (path) => `${basePath}${path}`;
 
 

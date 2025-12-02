@@ -11,7 +11,7 @@ import Footer from '@/components/Footer';
 
 
 
-export const basePath = process.env.NODE_ENV === "production" ? "/dev-portfolio" : "";
+export const basePath = (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_USE_CUSTOM_DOMAIN !== "true") ? "/dev-portfolio" : "";
 export const withBasePath = (path) => `${basePath}${path}`;
 
 
