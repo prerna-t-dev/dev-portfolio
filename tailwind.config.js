@@ -47,6 +47,9 @@ module.exports = {
         'subtle-purple': '#b3a2c7', // Light purple
         'subtle-pink': '#f2a1b3', // Light pink
         'subtle-blue': '#a1c4fd', // Light blue
+        'subtle-purple-light': '#c8bdd8', // Lighter purple
+        'subtle-pink-light': '#f7b8c8', // Lighter pink
+        'subtle-blue-light': '#b8d4fe', // Lighter blue
       },
       animation: {
         fadeIn: "fadeIn 1.5s ease-in forwards", 

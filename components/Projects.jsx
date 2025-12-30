@@ -31,29 +31,58 @@ const featuredProjects = [
       'Lenis'
     ]
   },
+  // {
+  //   number: '02',
+  //   projectLink: 'https://onpargolf.com/',
+  //   parallaxBgImg: 'test-img.webp',
+  //   projectVideoClip: 'OnPar-Homepage.mp4',
+  //   projectHeader: 'On Par Golf',
+  //   projectDescription: 'High Performance Trendy Goft Attire',
+  //   tags: [
+  //     'Liquid',
+  //     'jQuery'
+  //   ]
+  // },
   {
     number: '02',
-    projectLink: 'https://onpargolf.com/',
+    projectLink: 'https://www.moziwash.com/',
     parallaxBgImg: 'test-img.webp',
-    projectVideoClip: 'OnPar-Homepage.mp4',
-    projectHeader: 'On Par Golf',
-    projectDescription: 'High Performance Trendy Goft Attire',
+    projectVideoClip: 'Moziwash-Homepage.mp4',
+    projectHeader: 'MoziWash',
+    projectDescription: 'Designer Scented Laundry Detergent',
     tags: [
       'Liquid',
-      'jQuery'
+      'jQuery',
+      'Shopify',
+      'Recharge'
     ]
   },
+  // {
+  //   number: '03',
+  //   projectLink: '',
+  //   parallaxBgImg: 'test-img-3.webp',
+  //   projectVideoClip: 'SNE-Bundle-Builder.mp4',
+  //   projectHeader: 'Sketch & Etch',
+  //   projectDescription: 'Fully Customizable Custom Built Neon Signs',
+  //   tags: [
+  //     'Liquid',
+  //     'Vue JS',
+  //     'Javascript',
+  //     'GSAP'
+  //   ]
+  // },
   {
     number: '03',
-    projectLink: '',
+    projectLink: 'https://www.maiaestates.in/',
     parallaxBgImg: 'test-img-3.webp',
-    projectVideoClip: 'SNE-Bundle-Builder.mp4',
-    projectHeader: 'Sketch & Etch',
-    projectDescription: 'Fully Customizable Custom Built Neon Signs',
+    projectVideoClip: 'MAIA-homepage.mp4',
+    projectHeader: 'MAIA Estates',
+    projectDescription: 'Luxury Real Estate Developers',
     tags: [
-      'Liquid',
-      'Vue JS',
+      'PHP',
+      'Wordpress',
       'Javascript',
+      'Lenis',
       'GSAP'
     ]
   },
@@ -296,7 +325,11 @@ const Projects = () => {
           <div className="relative w-fit mx-auto mt-20 group">
             <Link 
               href="/projects"
-              className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block text-center relative z-10"
+              className="text-transparent font-medium bg-gradient-to-r from-subtle-purple-light via-subtle-pink-light to-subtle-blue-light bg-clip-text text-xl block text-center relative z-10"
+              style={{
+                backgroundSize: '200% 100%',
+                animation: 'gradientShift 2s ease infinite'
+              }}
             >
               View More 
 
