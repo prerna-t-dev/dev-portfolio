@@ -75,7 +75,7 @@ const featuredProjects = [
     number: '03',
     projectLink: 'https://www.maiaestates.in/',
     parallaxBgImg: 'test-img-3.webp',
-    projectVideoClip: 'MAIA-homepage.mp4',
+    projectVideoClip: 'MAIA-Homepage.mp4',
     projectHeader: 'MAIA Estates',
     projectDescription: 'Luxury Real Estate Developers',
     tags: [
@@ -255,7 +255,7 @@ const Projects = () => {
             {
               featuredProjects.map((featuredProject, index) => {
                 return <div key={index} className="grid grid-cols-1 lg:grid-cols-[40%_60%] h-full">
-                        <p className="sticky top-20 text-[22vw] overflow-hidden h-fit font-normal leading-[0.8] text-secondary-500 hidden lg:block">{featuredProject.number}.</p>
+                        <p className="sticky top-20 text-[clamp(1rem,22vw,300px)] overflow-hidden h-fit font-normal leading-[0.8] text-secondary-500 hidden lg:block">{featuredProject.number}.</p>
 
 
                         <div>
