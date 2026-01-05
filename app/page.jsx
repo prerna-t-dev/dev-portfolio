@@ -8,6 +8,7 @@ import { StarBackground } from "@/components/ui/StarBackground";
 import CustomCursor from "@/components/CustomCursor";
 import Awards from "../components/Awards";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 
 export default function Home() {
@@ -38,6 +39,10 @@ export default function Home() {
       <Projects />
       <Awards />
       <Contact />
+      
+      <div className="my-10 px-6">
+        <Footer />
+      </div>
       
     </div>
     </>
