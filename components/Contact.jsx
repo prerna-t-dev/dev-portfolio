@@ -75,7 +75,7 @@ export default function Contact() {
             
 
         </div>
-        <Footer />
+        {/* <Footer /> */}
       
     </div>
   )
