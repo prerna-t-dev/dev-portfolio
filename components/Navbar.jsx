@@ -102,6 +102,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="cursor-pointer">
+            <Link href="/#pf--testimonials" onClick={(e) => handleScroll(e, 'pf--testimonials')}>
+              Testimonials
+            </Link>
+          </li>
+          <li className="cursor-pointer">
             <Link href="/#pf--contact" onClick={(e) => handleScroll(e, 'pf--contact')}>
               Contact
             </Link>

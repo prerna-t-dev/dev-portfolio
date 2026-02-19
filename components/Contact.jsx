@@ -64,7 +64,7 @@ export default function Contact() {
                             LinkedIn
                         </span>
                     </Link>
-                    <Link href="https://github.com/prerna-t-dev?tab=overview&from=2025-01-01&to=2025-01-28" target="_blank">
+                    <Link href="https://github.com/prerna-t-dev" target="_blank">
                         <span className="font-semibold text-secondary-500">
                             Github
                         </span>
