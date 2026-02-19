@@ -18,7 +18,7 @@ const featuredProjects = [
   {
     number: '01',
     projectLink: 'https://counterculturecoffee.com/',
-    parallaxBgImg: 'test-img-2.webp',
+    parallaxBgImg: 'bg-image-2.jpg',
     projectVideoClip: 'CCC-Homepage.mp4',
     projectHeader: 'Counter Culture Coffee',
     projectDescription: 'Sustainability focussed Premium Coffee Subscriptions',
@@ -45,8 +45,23 @@ const featuredProjects = [
   // },
   {
     number: '02',
+    projectLink: 'https://www.shopscoopstudio.com/',
+    parallaxBgImg: 'bg-image-3.jpg',
+    projectVideoClip: 'Scoop-Homepage.mp4',
+    projectHeader: 'Scoop Studio',
+    projectDescription: 'Luxury Lingerie for all sizes',
+    tags: [
+      'Liquid',
+      'Shopify',
+      'Tailwind',
+      'GSAP',
+      'Shopify Flow'
+    ]
+  },
+  {
+    number: '03',
     projectLink: 'https://www.moziwash.com/',
-    parallaxBgImg: 'test-img.webp',
+    parallaxBgImg: 'bg-image-1.jpg',
     projectVideoClip: 'Moziwash-Homepage.mp4',
     projectHeader: 'MoziWash',
     projectDescription: 'Designer Scented Laundry Detergent',
@@ -72,9 +87,9 @@ const featuredProjects = [
   //   ]
   // },
   {
-    number: '03',
+    number: '04',
     projectLink: 'https://www.maiaestates.in/',
-    parallaxBgImg: 'test-img-3.webp',
+    parallaxBgImg: 'bg-image-4.jpg',
     projectVideoClip: 'MAIA-Homepage.mp4',
     projectHeader: 'MAIA Estates',
     projectDescription: 'Luxury Real Estate Developers',
@@ -87,11 +102,11 @@ const featuredProjects = [
     ]
   },
   {
-    number: '04',
+    number: '05',
     projectLink: 'https://houndstoothsc.com/',
-    parallaxBgImg: 'test-img-4.webp',
+    parallaxBgImg: 'bg-image-5.jpg',
     projectVideoClip: 'HT-Homepage.mp4',
-    projectHeader: 'Houndstooth Strategic Comm.',
+    projectHeader: 'Houndstooth Strategic Communications',
     projectDescription: 'Award Winning Design and Development Studio Website',
     tags: [
       'HTML',
@@ -101,11 +116,11 @@ const featuredProjects = [
     ]
   },
   {
-    number: '05',
+    number: '06',
     projectLink: 'https://counterculturecoffee.com/pages/transparency-report-2023',
-    parallaxBgImg: 'test-img-5.webp',
+    parallaxBgImg: 'bg-image-6.jpg',
     projectVideoClip: 'CCC-TR.mp4',
-    projectHeader: 'Counter Culture - Transparency Report 2023',
+    projectHeader: 'Counter Culture - Transparency Report',
     projectDescription: 'Counter Culture Coffee\'s Award-Winning Landing Page documenting their Sustainability Practices',
     tags: [
       'Liquid',

@@ -7,6 +7,7 @@ import { AuroraBackgroundDark } from "@/components/ui/AuroraBackgroundDark";
 import { StarBackground } from "@/components/ui/StarBackground";
 import CustomCursor from "@/components/CustomCursor";
 import Awards from "../components/Awards";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -38,10 +39,16 @@ export default function Home() {
       <Skills />
       <Projects />
       <Awards />
+
+      <div className="relative">
+      <StarBackground className="absolute inset-0 -z-10" />
+     
+      <Testimonials />
       <Contact />
       
       <div className="my-10 px-6">
         <Footer />
+      </div>
       </div>
       
     </div>

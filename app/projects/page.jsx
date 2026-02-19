@@ -52,7 +52,7 @@ const projectList = [
   },
   {
     projectLink: 'https://www.argylesp.com/',
-    parallaxBgImg: '',
+    parallaxBgImg: 'argyle-bg.png',
     bgScale: '1.5',
     bgOrigin: 'origin-bottom',
     mockupImg: 'argyle-mockup-1.png',
@@ -151,6 +151,7 @@ const Projects = () => {
                     <Link href={project.projectLink} target="_blank">
 
                       {/* { project.number} */}
+                      { project.parallaxBgImg && 
                       <Parallax speed={1.5} className={`absolute inset-0 w-full h-full scale-[${project.bgScale}] ${project.bgOrigin}`}>
                         <Image
                           src={withBasePath(`/images/${project.parallaxBgImg}`)}
@@ -161,6 +162,7 @@ const Projects = () => {
                           alt='bg'
                         />
                       </Parallax>
+                      }
 
                       {project.mockupImg && 
                       <Image
