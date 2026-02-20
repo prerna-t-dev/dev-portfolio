@@ -45,9 +45,10 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{  opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.5 }}
-          className="text-base lg:text-xl font-medium text-secondary-500 leading-[1.25em] md:leading-[1.08em] px-30 lg:px-[250px] mt-10"
+          className="text-base lg:text-xl font-medium text-secondary-500 leading-[1.25em] md:leading-[1.08em] px-30 lg:px-[300px] mt-10"
         >
-         I craft dynamic e-commerce solutions by leveraging advanced front-end technologies to deliver seamless, engaging digital experiences that drive growth and connect with users.
+         {/* I craft dynamic e-commerce solutions by leveraging advanced front-end technologies to deliver seamless, engaging digital experiences that drive growth and connect with users. */}
+         I develop scalable, conversion-focused e-commerce solutions using modern front-end technologies, delivering fast, intuitive experiences that support business growth.
         </motion.p>
 
 

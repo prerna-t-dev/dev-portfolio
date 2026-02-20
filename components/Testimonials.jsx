@@ -6,21 +6,21 @@ import { motion, AnimatePresence } from 'framer-motion'
 const testimonials = [
   {
     id: 1,
-    quote: "Prerna delivered exceptional work on our Shopify store. Her attention to detail and technical expertise transformed our site into a high-performing e-commerce platform.",
-    author: "Sarah Johnson",
-    role: "CEO, Brand Co."
+    quote: "Working with Prerna was an absolute game changer for our business. She brought our vision to life with a beautifully built, high performing website that feels truly custom to our brand, and the proprietary Bra Quiz she developed has been incredible for customer engagement and conversions.",
+    author: "Rhea Chawla",
+    role: "Founder & CEO, Scoop Studio"
   },
   {
     id: 2,
-    quote: "I had the pleasure of working with Prerna, an exceptionally talented developer. She led the dev roadmap and efficiently carried out the project end to end. Highly recommended!",
-    author: "Sid",
-    role: "Co-Founder, Soket AI Labs"
+    quote: "Working with Prerna has been an incredible experience from start to finish. She built our fully custom website and multiple high performing landing pages with great attention to detail, and has been a reliable long term partner, always available to support, optimize, and improve our site as we grow.",
+    author: "Julie Johnson",
+    role: "Founder, Mushpreneur Inc."
   },
   {
     id: 3,
-    quote: "Prerna's front-end development skills are outstanding. She created a seamless shopping experience that our customers love, and her code is clean and maintainable.",
-    author: "Emily Rodriguez",
-    role: "Head of E-commerce, Retail Brand"
+    quote: "I had the pleasure of working with Prerna, an exceptionally talented developer. She led the dev roadmap and efficiently carried out the project end to end. Highly recommended!",
+    author: "Sid",
+    role: "Co-Founder, Soket AI Labs"
   },
   {
     id: 4,
@@ -29,6 +29,9 @@ const testimonials = [
     role: "Head of E-commerce, Counter Culture Coffee"
   }
 ]
+
+const SLIDE_DURATION = 0.7
+const EASE = [0.4, 0, 0.2, 1]
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -47,29 +50,32 @@ const Testimonials = () => {
       Client Testimonials
       </h2>
       
-      <div className="relative min-h-[300px]_ lg:min-h-[400px]_">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-            className="max-w-4xl"
-          >
-            <blockquote className="text-xl lg:text-2xl font-general text-secondary-300 leading-relaxed mb-6">
-              &ldquo;{testimonials[currentIndex].quote}&rdquo;
-            </blockquote>
-            <div className="flex flex-col">
-              <cite className="text-lg font-semibold text-secondary-500 not-italic">
-                {testimonials[currentIndex].author}
-              </cite>
-              <span className="text-sm text-secondary-500 opacity-70">
-                {testimonials[currentIndex].role}
-              </span>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+      <div className="relative">
+        {/* Fixed-height slot so layout doesn't shift when quote length changes */}
+        <div className="relative min-h-[280px] lg:min-h-[300px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: SLIDE_DURATION, ease: EASE }}
+              className="absolute inset-0 max-w-4xl"
+            >
+              <blockquote className="text-xl lg:text-2xl font-general text-secondary-300 leading-relaxed mb-6">
+                &ldquo;{testimonials[currentIndex].quote}&rdquo;
+              </blockquote>
+              <div className="flex flex-col">
+                <cite className="text-lg font-semibold text-secondary-500 not-italic">
+                  {testimonials[currentIndex].author}
+                </cite>
+                <span className="text-sm text-secondary-500 opacity-70">
+                  {testimonials[currentIndex].role}
+                </span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         {/* Indicator dots */}
         <div className="flex gap-3 mt-8 lg:mt-12 items-center">
@@ -77,7 +83,8 @@ const Testimonials = () => {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              style={{ transitionDuration: `${SLIDE_DURATION}s`, transitionTimingFunction: `cubic-bezier(${EASE.join(',')})` }}
+              className={`transition-all ${
                 index === currentIndex
                   ? 'w-16 h-[2px] rounded-full bg-secondary-500'
                   : 'w-5 h-5 flex items-center justify-center text-secondary-500 hover:opacity-80 text-lg'
