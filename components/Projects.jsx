@@ -1,13 +1,70 @@
 "use client"
 
-import React, {useState, useRef} from 'react'
-import VideoPlayer from "./ui/VideoPlayer";
+import React, { useState, useRef, useEffect } from 'react'
 import Image from "next/image"
 import Link from 'next/link';
 import Parallax from './Parallax';
 import useMouse from "@react-hook/mouse-position";
 import { useMediaQuery } from "react-responsive";
 import { useTransform, useScroll, motion } from 'framer-motion';
+
+/** Lazy-loads and plays video only when in viewport to reduce initial load and lag */
+function LazyProjectVideo({ src, basePath, className, ...props }) {
+  const containerRef = useRef(null)
+  const videoRef = useRef(null)
+  const [isInView, setIsInView] = useState(false)
+  const [shouldLoad, setShouldLoad] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.isIntersecting
+        setIsInView(visible)
+        if (visible && !shouldLoad) setShouldLoad(true)
+      },
+      { rootMargin: '50px', threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [shouldLoad])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !shouldLoad) return
+    if (isInView) {
+      video.play().catch(() => {})
+    } else {
+      video.pause()
+    }
+  }, [isInView, shouldLoad])
+
+  const fullSrc = `${basePath}/videos/${src}`
+
+  return (
+    <div ref={containerRef} className={className}>
+      {shouldLoad ? (
+        <video
+          ref={videoRef}
+          width="100%"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="relative z-10 rounded-[20px] w-full object-cover"
+          {...props}
+        >
+          <source src={fullSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div className="relative z-10 rounded-[20px] w-full aspect-[1/0.9] bg-black/20" aria-hidden />
+      )}
+    </div>
+  )
+}
 
 export const basePath = (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_USE_CUSTOM_DOMAIN !== "true") ? "/dev-portfolio" : "";
 export const withBasePath = (path) => `${basePath}${path}`;
@@ -20,6 +77,7 @@ const featuredProjects = [
     projectLink: 'https://counterculturecoffee.com/',
     parallaxBgImg: 'bg-image-2.jpg',
     projectVideoClip: 'CCC-Homepage.mp4',
+    mobileImage: 'project-01.png',
     projectHeader: 'Counter Culture Coffee',
     projectDescription: 'Sustainability focussed Premium Coffee Subscriptions',
     tags: [
@@ -36,6 +94,7 @@ const featuredProjects = [
   //   projectLink: 'https://onpargolf.com/',
   //   parallaxBgImg: 'test-img.webp',
   //   projectVideoClip: 'OnPar-Homepage.mp4',
+  //   mobileImage: 'project-onpar.png',
   //   projectHeader: 'On Par Golf',
   //   projectDescription: 'High Performance Trendy Goft Attire',
   //   tags: [
@@ -48,6 +107,7 @@ const featuredProjects = [
     projectLink: 'https://www.shopscoopstudio.com/',
     parallaxBgImg: 'bg-image-3.jpg',
     projectVideoClip: 'Scoop-Homepage.mp4',
+    mobileImage: 'project-02.png',
     projectHeader: 'Scoop Studio',
     projectDescription: 'Luxury Lingerie for all sizes',
     tags: [
@@ -63,6 +123,7 @@ const featuredProjects = [
     projectLink: 'https://www.moziwash.com/',
     parallaxBgImg: 'bg-image-1.jpg',
     projectVideoClip: 'Moziwash-Homepage.mp4',
+    mobileImage: 'project-03.png',
     projectHeader: 'MoziWash',
     projectDescription: 'Designer Scented Laundry Detergent',
     tags: [
@@ -77,6 +138,7 @@ const featuredProjects = [
   //   projectLink: '',
   //   parallaxBgImg: 'test-img-3.webp',
   //   projectVideoClip: 'SNE-Bundle-Builder.mp4',
+  //   mobileImage: 'project-sne.png',
   //   projectHeader: 'Sketch & Etch',
   //   projectDescription: 'Fully Customizable Custom Built Neon Signs',
   //   tags: [
@@ -91,6 +153,7 @@ const featuredProjects = [
     projectLink: 'https://www.maiaestates.in/',
     parallaxBgImg: 'bg-image-4.jpg',
     projectVideoClip: 'MAIA-Homepage.mp4',
+    mobileImage: 'project-04.png',
     projectHeader: 'MAIA Estates',
     projectDescription: 'Luxury Real Estate Developers',
     tags: [
@@ -106,6 +169,7 @@ const featuredProjects = [
     projectLink: 'https://houndstoothsc.com/',
     parallaxBgImg: 'bg-image-5.jpg',
     projectVideoClip: 'HT-Homepage.mp4',
+    mobileImage: 'project-05.png',
     projectHeader: 'Houndstooth Strategic Communications',
     projectDescription: 'Award Winning Design and Development Studio Website',
     tags: [
@@ -120,6 +184,7 @@ const featuredProjects = [
     projectLink: 'https://counterculturecoffee.com/pages/transparency-report-2023',
     parallaxBgImg: 'bg-image-6.jpg',
     projectVideoClip: 'CCC-TR.mp4',
+    mobileImage: 'project-06.png',
     projectHeader: 'Counter Culture - Transparency Report',
     projectDescription: 'Counter Culture Coffee\'s Award-Winning Landing Page documenting their Sustainability Practices',
     tags: [
@@ -275,7 +340,7 @@ const Projects = () => {
 
                         <div>
                           <Link href={featuredProject.projectLink} target="_blank" onMouseEnter={projectEnter} onMouseLeave={projectLeave}>
-                            <div className="aspect-[1/0.9] bg-gradient-to-b from-[#b3a2c7] via-[#f2a1b3] to-[#0a0a0a] rounded-xl lg:rounded-3xl flex items-center justify-center px-4 lg:px-16 relative overflow-hidden">
+                            <div className="aspect-[16/13] lg:aspect-[1/0.9] bg-gradient-to-b from-[#b3a2c7] via-[#f2a1b3] to-[#0a0a0a] rounded-xl lg:rounded-3xl flex items-center justify-center px-4 lg:px-16 relative overflow-hidden">
                               <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
                                 <Image
                                   src={`${basePath}/images/${featuredProject.parallaxBgImg}`}
@@ -286,18 +351,22 @@ const Projects = () => {
                                 />
                               </Parallax>
 
-                              <video
-                                width="100%"
-                                autoPlay
-                                loop
-                                muted
-                                className="relative z-10 rounded-[20px]"
-                                preload="auto"
-                                
-                              >
-                                <source  src={`${basePath}/videos/${featuredProject.projectVideoClip}`} type="video/mp4" />
-                                Your browser does not support the video tag.
-                              </video>  
+                              {isDesktop ? (
+                                <LazyProjectVideo
+                                  src={featuredProject.projectVideoClip}
+                                  basePath={basePath}
+                                />
+                              ) : (
+                                <div className="relative z-10 rounded-[20px] w-full aspect-[16/10] overflow-hidden">
+                                  <Image
+                                    src={`${basePath}/images/${featuredProject.mobileImage}`}
+                                    alt={featuredProject.projectHeader}
+                                    width={800}
+                                    height={600}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                              )}  
 
 
                             </div>

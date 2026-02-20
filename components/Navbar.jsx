@@ -18,7 +18,7 @@ const Navbar = () => {
 
   // Run smooth scroll after navigating to homepage with a hash
   useEffect(() => {
-    if (typeof window !== 'undefined' && pathname === '/' && window.location.hash) {
+    if (typeof window !== 'undefined' && pathname === '/' && window.location.hash && lenis) {
       const target = window.location.hash.substring(1) // Remove #
       setTimeout(() => {
         lenis.scrollTo(`#${target}`, { lerp: 0.1 })
@@ -31,8 +31,13 @@ const Navbar = () => {
     setIsDrawerOpen(false) // Close drawer when navigating
 
     if (pathname === '/') {
-      // If already on the homepage, scroll smoothly
-      lenis.scrollTo(`#${target}`, { lerp: 0.1 })
+      // If already on the homepage, scroll smoothly (when Lenis is ready)
+      if (lenis) {
+        lenis.scrollTo(`#${target}`, { lerp: 0.1 })
+      } else {
+        const el = document.getElementById(target)
+        el?.scrollIntoView({ behavior: 'smooth' })
+      }
     } else {
       // If on another page, navigate to homepage with the section hash
       router.push(`/#${target}`)
