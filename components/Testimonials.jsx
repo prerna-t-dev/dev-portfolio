@@ -52,7 +52,7 @@ const Testimonials = () => {
       
       <div className="relative">
         {/* Fixed-height slot so layout doesn't shift when quote length changes */}
-        <div className="relative min-h-[280px] lg:min-h-[300px]">
+        <div className="relative min-h-[380px] lg:min-h-[320px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}

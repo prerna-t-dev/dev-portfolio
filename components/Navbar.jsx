@@ -185,6 +185,15 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
+                    href="/#pf--testimonials"
+                    onClick={(e) => handleScroll(e, 'pf--testimonials')}
+                    className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
+                  >
+                    Testimonials
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/#pf--contact"
                     onClick={(e) => handleScroll(e, 'pf--contact')}
                     className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
