@@ -44,18 +44,26 @@ export default function Contact() {
             <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full w-4/5_ gap-4">
                 <p className="text-base opacity-70 lg:w-1/2 lg:pr-20 text-secondary-300">
                     <span className="pb-2 block">
-                        I&apos;m a <strong>Senior Shopify Front-End Developer</strong> specializing in building high-performance, user-friendly e-commerce experiences. I’ve led and developed Shopify projects for D2C and B2B brands, ensuring seamless functionality, speed, and scalability.
+                        {/* I&apos;m a <strong>Senior Shopify Front-End Developer</strong> specializing in building high-performance, user-friendly e-commerce experiences. I’ve led and developed Shopify projects for D2C and B2B brands, ensuring seamless functionality, speed, and scalability. */}
+                            I’m a Senior Shopify Frontend Engineer with 7+ years of experience building high-performance e-commerce experiences. I’ve led and delivered Shopify projects for D2C and B2B brands, focusing on scalable architecture, performance, and conversion optimization.
                         <br />
                     </span>
                
                     <span className="pb-2 block">
-                        I focus on <strong>Custom Shopify themes, performance-driven UI enhancements, and optimizing site speed</strong> to create smooth, efficient storefronts. My goal is to build <strong>fast, accessible, and conversion-optimized experiences</strong> that help brands grow.
+                        {/* I focus on <strong>Custom Shopify themes, performance-driven UI enhancements, and optimizing site speed</strong> to create smooth, efficient storefronts. My goal is to build <strong>fast, accessible, and conversion-optimized experiences</strong> that help brands grow. */}
+                        My work involves developing <strong>Custom Shopify themes, Complex frontend systems, and Interactive UI components</strong>, including bundle builders, subscription flows, and advanced product experiences. I focus on creating fast, intuitive storefronts that improve usability and drive business outcomes.
                         <br />
                     </span>
-            
-                Beyond coding, I enjoy reading, biking, and exploring new technologies. I also enjoy painting—it&apos;s my favorite way to unwind and spark creativity.
-                                
+                                            
+
+                    <span className="pb-2 block">
+                        I prioritize performance, maintainability, and minimal app dependency, ensuring solutions are scalable and easy to extend. I approach each project with a balance of technical execution and business understanding, aligning frontend decisions with conversion and growth goals.                
+                    </span>
+
+                Outside of work, I enjoy reading, biking, and exploring new technologies. I also paint as a way to unwind and stay creative.
+
                 </p>
+
 
 
                 <div className="lg:text-right flex flex-col gap-2 text-lg">
