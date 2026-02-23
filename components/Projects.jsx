@@ -8,7 +8,7 @@ import useMouse from "@react-hook/mouse-position";
 import { useMediaQuery } from "react-responsive";
 import { useTransform, useScroll, motion } from 'framer-motion';
 
-/** Lazy-loads and plays video only when in viewport to reduce initial load and lag */
+/** Loads video when section is near viewport so it's ready when user scrolls to it */
 function LazyProjectVideo({ src, basePath, className, ...props }) {
   const containerRef = useRef(null)
   const videoRef = useRef(null)
@@ -18,17 +18,27 @@ function LazyProjectVideo({ src, basePath, className, ...props }) {
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
-    const observer = new IntersectionObserver(
+    // Start loading when section is 60vh below viewport so video can buffer before user scrolls to it
+    const loadObserver = new IntersectionObserver(
       ([entry]) => {
-        const visible = entry.isIntersecting
-        setIsInView(visible)
-        if (visible && !shouldLoad) setShouldLoad(true)
+        if (entry.isIntersecting) setShouldLoad(true)
       },
-      { rootMargin: '50px', threshold: 0.1 }
+      { rootMargin: '0px 0px 600px 0px', threshold: 0 }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [shouldLoad])
+    loadObserver.observe(el)
+    return () => loadObserver.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const playObserver = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { rootMargin: '50px', threshold: 0.2 }
+    )
+    playObserver.observe(el)
+    return () => playObserver.disconnect()
+  }, [])
 
   useEffect(() => {
     const video = videoRef.current
@@ -52,7 +62,7 @@ function LazyProjectVideo({ src, basePath, className, ...props }) {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           className="relative z-10 rounded-[20px] w-full object-cover"
           {...props}
         >
@@ -80,6 +90,14 @@ const featuredProjects = [
     mobileImage: 'project-01.png',
     projectHeader: 'Counter Culture Coffee',
     projectDescription: 'Sustainability focussed Premium Coffee Subscriptions',
+    // projectDescription: 'Led the development of a conversion-focused Shopify storefront with subscriptions, custom bundling, and dynamic discounting, driving measurable improvements in CVR.',
+    projectNotes: [
+      'Shopify redesign & performance optimization',
+      'Custom Bundle Builder (CVR ↑30%)',
+      'Conversion-driven award winning landing pages',
+      'Custom Discounting Strategy for Recharge Subscriptions',
+      'Holiday Discount Campaign (CVR ↑10%)'
+    ],
     tags: [
       'Liquid',
       'Tailwind CSS',
@@ -110,6 +128,12 @@ const featuredProjects = [
     mobileImage: 'project-02.png',
     projectHeader: 'Scoop Studio',
     projectDescription: 'Luxury Lingerie for all sizes',
+    projectNotes: [
+      'Custom Shopify architecture',
+      'Guided sizing quiz system',
+      'Hybrid product + service flows',
+      'Advanced size-based filtering'
+    ],
     tags: [
       'Liquid',
       'Shopify',
@@ -126,6 +150,11 @@ const featuredProjects = [
     mobileImage: 'project-03.png',
     projectHeader: 'MoziWash',
     projectDescription: 'Designer Scented Laundry Detergent',
+    projectNotes: [
+      'Shopify rebrand & UX overhaul',
+      'Bundle builder + Subscriptions (AOV + recurring revenue)',
+      'Tiered gifting logic (AOV ↑50%)'
+    ],
     tags: [
       'Liquid',
       'jQuery',
@@ -156,6 +185,11 @@ const featuredProjects = [
     mobileImage: 'project-04.png',
     projectHeader: 'MAIA Estates',
     projectDescription: 'Luxury Real Estate Developers',
+    projectNotes: [
+      'Luxury brand website redesign',
+      'Premium visual experience',
+      'Brand-focused storytelling'
+    ],
     tags: [
       'PHP',
       'Wordpress',
@@ -172,6 +206,11 @@ const featuredProjects = [
     mobileImage: 'project-05.png',
     projectHeader: 'Houndstooth Strategic Communications',
     projectDescription: 'Award Winning Design and Development Studio Website',
+    projectNotes: [
+      'Agency website redesign',
+      'Brand-driven frontend implementation',
+      'Custom interactive UI'
+    ],
     tags: [
       'HTML',
       'CSS',
@@ -187,6 +226,11 @@ const featuredProjects = [
     mobileImage: 'project-06.png',
     projectHeader: 'Counter Culture - Transparency Report',
     projectDescription: 'Counter Culture Coffee\'s Award-Winning Landing Page documenting their Sustainability Practices',
+    projectNotes: [
+      'Interactive landing page',
+      'Scroll-based animation system',
+      'High-performance UI implementation'
+    ],
     tags: [
       'Liquid',
       'Tailwind',
@@ -382,6 +426,7 @@ const Projects = () => {
                                 <p className="text-sm w-2/3 opacity-70 hidden lg:block">
                                   {featuredProject.projectDescription}
                                 </p>
+                                
 
                               </div>
                             
@@ -399,6 +444,16 @@ const Projects = () => {
                               </div>
 
                           </div>
+
+                          <ul className="text-xs mt-4 lg:mt-6 lg:text-right text-secondary-500 opacity-70 list-none">
+                            { featuredProject.projectNotes && 
+                              featuredProject.projectNotes.map((note, index) => {
+                                return (
+                                  <li key={index} className="list-none mt-1"> {note} <span className="opacity-90"> &nbsp;✦</span></li>
+                                )
+                              })
+                            }
+                          </ul>
                         </div>
                       </div>
 
