@@ -202,7 +202,9 @@ const featuredProjects = [
 const Projects = () => {
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState("default");
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => setMounted(true), []);
 
   const ref = React.useRef(null);
   const mouse = useMouse(ref, {
@@ -292,12 +294,11 @@ const Projects = () => {
   // const scale = isDesktop ? useTransform(scrollYProgress, [0, 1], [0.8, 1]) : 1;
 
   const scaleDesktop = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const scale = isDesktop ? scaleDesktop : 1;
-
-
+  const showDesktop = mounted && isDesktop;
+  const scale = showDesktop ? scaleDesktop : 1;
 
   return (
-    <motion.div style={isDesktop ? { scale } : {}} className="relative origin-top projects-wrapper mt-8 lg:mt-32">
+    <motion.div style={showDesktop ? { scale } : {}} className="relative origin-top projects-wrapper mt-8 lg:mt-32">
       
       <div ref={container} id="pf--projects" className="min-h-screen_ rounded-[30px] lg:rounded-[60px] pb-8 lg:pb-20 bg-gradient-to-b from-[#0a0a0a] to-[#0b192e] mt-12 relative ">
         <div className="max-w-[1260px] px-6 mx-auto py-12 lg:py-24">
@@ -344,14 +345,15 @@ const Projects = () => {
                               <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
                                 <Image
                                   src={`${basePath}/images/${featuredProject.parallaxBgImg}`}
-                                  className='w-full'
-                                  width={500}
-                                  height={500}
+                                  className="w-full h-full object-cover"
+                                  width={800}
+                                  height={720}
+                                  sizes="(max-width: 1023px) 100vw, min(1920px, 60vw)"
                                   alt={featuredProject.projectHeader}
                                 />
                               </Parallax>
 
-                              {isDesktop ? (
+                              {showDesktop ? (
                                 <LazyProjectVideo
                                   src={featuredProject.projectVideoClip}
                                   basePath={basePath}
@@ -363,6 +365,7 @@ const Projects = () => {
                                     alt={featuredProject.projectHeader}
                                     width={800}
                                     height={600}
+                                    sizes="100vw"
                                     className="w-full h-full object-cover"
                                   />
                                 </div>
