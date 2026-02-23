@@ -18,11 +18,11 @@ const Hero = () => {
 
   return (
     <div id="pf--hero" className="lg:text-center max-w-[1260px] mx-auto min-h-[50vh] lg:min-h-[80vh] bg-secondary-300_ mt-12 lg:mt-32 px-6">
-        {/* Hero Title with delay */}
+        {/* Hero Title - short transition so LCP stays fast */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0 }}
           className="text-title font-general lg:text-center font-semibold leading-none mb-3"
         >
             <span className="text-subtitle">Hello,</span>
