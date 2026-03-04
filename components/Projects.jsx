@@ -82,31 +82,7 @@ export const withBasePath = (path) => `${basePath}${path}`;
 
 
 const featuredProjects = [
-  {
-    number: '01',
-    projectLink: 'https://counterculturecoffee.com/',
-    parallaxBgImg: 'bg-image-2.jpg',
-    projectVideoClip: 'CCC-Homepage.mp4',
-    mobileImage: 'project-01.png',
-    projectHeader: 'Counter Culture Coffee',
-    projectDescription: 'Sustainability focussed Premium Coffee Subscriptions',
-    // projectDescription: 'Led the development of a conversion-focused Shopify storefront with subscriptions, custom bundling, and dynamic discounting, driving measurable improvements in CVR.',
-    projectNotes: [
-      'Shopify redesign & performance optimization',
-      'Custom Bundle Builder (CVR ↑30%)',
-      'Conversion-driven award winning landing pages',
-      'Custom Discounting Strategy for Recharge Subscriptions',
-      'Holiday Discount Campaign (CVR ↑10%)'
-    ],
-    tags: [
-      'Liquid',
-      'Tailwind CSS',
-      'Recharge',
-      'jQuery',
-      'Gulp',
-      'Lenis'
-    ]
-  },
+  
   // {
   //   number: '02',
   //   projectLink: 'https://onpargolf.com/',
@@ -121,7 +97,7 @@ const featuredProjects = [
   //   ]
   // },
   {
-    number: '02',
+    number: '01',
     projectLink: 'https://www.shopscoopstudio.com/',
     parallaxBgImg: 'bg-image-3.jpg',
     projectVideoClip: 'Scoop-Homepage.mp4',
@@ -143,7 +119,7 @@ const featuredProjects = [
     ]
   },
   {
-    number: '03',
+    number: '02',
     projectLink: 'https://www.moziwash.com/',
     parallaxBgImg: 'bg-image-1.jpg',
     projectVideoClip: 'Moziwash-Homepage.mp4',
@@ -177,6 +153,31 @@ const featuredProjects = [
   //     'GSAP'
   //   ]
   // },
+  {
+    number: '03',
+    projectLink: 'https://counterculturecoffee.com/',
+    parallaxBgImg: 'bg-image-2.jpg',
+    projectVideoClip: 'CCC-Homepage.mp4',
+    mobileImage: 'project-01.png',
+    projectHeader: 'Counter Culture Coffee',
+    projectDescription: 'Sustainability focussed Premium Coffee Subscriptions',
+    // projectDescription: 'Led the development of a conversion-focused Shopify storefront with subscriptions, custom bundling, and dynamic discounting, driving measurable improvements in CVR.',
+    projectNotes: [
+      'Shopify redesign & performance optimization',
+      'Custom Bundle Builder (CVR ↑30%)',
+      'Conversion-driven award winning landing pages',
+      'Custom Discounting Strategy for Recharge Subscriptions',
+      'Holiday Discount Campaign (CVR ↑10%)'
+    ],
+    tags: [
+      'Liquid',
+      'Tailwind CSS',
+      'Recharge',
+      'jQuery',
+      'Gulp',
+      'Lenis'
+    ]
+  },
   {
     number: '04',
     projectLink: 'https://www.maiaestates.in/',

@@ -57,7 +57,7 @@ export default function Contact() {
                                             
 
                     <span className="pb-2 block">
-                        I prioritize performance, maintainability, and minimal app dependency, ensuring solutions are scalable and easy to extend. I approach each project with a balance of technical execution and business understanding, aligning frontend decisions with conversion and growth goals.                
+                        I prioritize performance, maintainability, and minimal app dependency, ensuring solutions are scalable and easy to extend. I approach each project with a balance of technical execution and business understanding, with a strong focus on <strong>CRO</strong> and revenue impact—aligning frontend decisions with conversion and growth goals.                
                     </span>
 
                 Outside of work, I enjoy reading, biking, and exploring new technologies. I also paint as a way to unwind and stay creative.
