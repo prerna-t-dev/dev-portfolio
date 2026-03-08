@@ -44,7 +44,7 @@ const Parallax = ({ className, children, speed=1, id="parallax" }) => {
 
   return (
     <div ref={trigger} className={className}>
-        <div ref={target}>
+        <div ref={target} className="h-full w-full">
             { children }
         </div>
       
