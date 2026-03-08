@@ -50,6 +50,9 @@ module.exports = {
         'subtle-purple-light': '#c8bdd8', // Lighter purple
         'subtle-pink-light': '#f7b8c8', // Lighter pink
         'subtle-blue-light': '#b8d4fe', // Lighter blue
+        'subtle-purple-dark': '#b3a2c7', // Bright purple, better contrast on white
+        'subtle-pink-dark': '#c75c72', // Bright pink, better contrast on white
+        'subtle-blue-dark': '#5a8ed9', // Bright blue, better contrast on white
       },
       animation: {
         fadeIn: "fadeIn 1.5s ease-in forwards", 
