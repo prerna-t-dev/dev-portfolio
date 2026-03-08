@@ -108,4 +108,5 @@
   font-size: inherit;
   pointer-events: none;
   margin: auto;
+  white-space: nowrap;
 }

@@ -63,14 +63,14 @@ function LazyProjectVideo({ src, basePath, className, ...props }) {
           muted
           playsInline
           preload="auto"
-          className="relative z-10 rounded-[20px] w-full object-cover"
+          className="relative z-10 rounded-xl w-full object-cover"
           {...props}
         >
           <source src={fullSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (
-        <div className="relative z-10 rounded-[20px] w-full aspect-[1/0.9] bg-black/20" aria-hidden />
+        <div className="relative z-10 rounded-xl w-full aspect-[1/0.9] bg-black/20" aria-hidden />
       )}
     </div>
   )
@@ -99,6 +99,8 @@ const featuredProjects = [
   {
     number: '01',
     awardWinner: false,
+    caseStudy: true,
+    caseStudyLink: '/case-study/scoop',
     projectLink: 'https://www.shopscoopstudio.com/',
     parallaxBgImg: 'bg-image-3.jpg',
     projectVideoClip: 'Scoop-Homepage.mp4',
@@ -295,8 +297,18 @@ const Projects = () => {
       height: 40,
       width: 80,
       fontSize: "16px",
-      x: mouseXPosition - 32,
-      y: mouseYPosition - 32
+      x: mouseXPosition - 40,
+      y: mouseYPosition - 20
+    },
+    projectCaseStudy: {
+      opacity: 1,
+      background: "linear-gradient(to right, #b3a2c7, #f2a1b3, #a1c4fd)",
+      color: "#000",
+      height: 40,
+      width: 160,
+      fontSize: "16px",
+      x: mouseXPosition - 80,
+      y: mouseYPosition - 20
     },
   };
 
@@ -315,9 +327,9 @@ const Projects = () => {
   
 
 
-  function projectEnter(event) {
-    setCursorText("View");
-    setCursorVariant("project");
+  function projectEnter(isCaseStudy) {
+    setCursorText(isCaseStudy ? "View case study" : "View");
+    setCursorVariant(isCaseStudy ? "projectCaseStudy" : "project");
   }
 
   function projectLeave(event) {
@@ -361,7 +373,7 @@ const Projects = () => {
                     animate={cursorVariant}
                     transition={tween}
                   >
-                    <span className="cursorText span items-center">{cursorText}
+                    <span className="cursorText span items-center whitespace-nowrap">{cursorText}
                     </span>
 
                     <div className="w-[20px] h-[20px]">
@@ -391,10 +403,15 @@ const Projects = () => {
 
 
                         <div>
-                          <Link href={featuredProject.projectLink} target="_blank" onMouseEnter={projectEnter} onMouseLeave={projectLeave}>
+                          <Link
+                            href={featuredProject.caseStudy ? featuredProject.caseStudyLink : featuredProject.projectLink}
+                            {...(featuredProject.caseStudy ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                            onMouseEnter={() => projectEnter(featuredProject.caseStudy)}
+                            onMouseLeave={projectLeave}
+                          >
                             <div className="aspect-[16/13] lg:aspect-[1/0.9] bg-gradient-to-b from-[#b3a2c7] via-[#f2a1b3] to-[#0a0a0a] rounded-xl lg:rounded-3xl flex items-center justify-center px-4 lg:px-16 relative overflow-hidden">
                               {featuredProject.awardWinner && (
-                                <div className="absolute top-3 left-3 lg:top-5 lg:left-5 z-20 flex items-center gap-2.5 py-2.5 pl-3.5 pr-4 rounded-full bg-black/75 border border-white/25 backdrop-blur-sm" aria-label="Award winner">
+                                <div className="absolute top-3 left-3 lg:top-5 lg:left-5 z-20 flex items-center gap-2.5 py-2.5 pl-3.5 pr-4 rounded-xl bg-black/75 border border-white/25 backdrop-blur-sm" aria-label="Award winner">
                                   <span className="relative inline-flex shrink-0">
                                     <svg viewBox="0 0 64 64" className="h-6 w-6 lg:h-7 lg:w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                       <path d="M20 10H44V24C44 31 38.5 36 32 36C25.5 36 20 31 20 24V10Z" fill="#F5B301" />
@@ -407,6 +424,11 @@ const Projects = () => {
                                     <span className="absolute -top-0.5 -right-0.5 text-amber-300 text-[10px] leading-none" aria-hidden>✦</span>
                                   </span>
                                   <span className="text-sm lg:text-base font-semibold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue">Award winner</span>
+                                </div>
+                              )}
+                              {featuredProject.caseStudy && (
+                                <div className="absolute top-3 right-3 lg:top-5 lg:right-5 z-20 py-0.5 px-2.5 rounded-lg bg-amber-700 backdrop-blur-sm shadow-md shadow-amber-900/40" aria-label="Case study">
+                                  <span className="text-[10px] lg:text-xs font-semibold tracking-wide text-amber-50">case-study</span>
                                 </div>
                               )}
                               <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
@@ -426,7 +448,7 @@ const Projects = () => {
                                   basePath={basePath}
                                 />
                               ) : (
-                                <div className="relative z-10 rounded-[20px] w-full aspect-[16/10] overflow-hidden">
+                                <div className="relative z-10 rounded-xl w-full aspect-[16/10] overflow-hidden">
                                   <Image
                                     src={`${basePath}/images/${featuredProject.mobileImage}`}
                                     alt={featuredProject.projectHeader}
@@ -442,6 +464,7 @@ const Projects = () => {
                             </div>
                           </Link>
 
+                          
 
                           <div className="flex flex-col lg:flex-row items-start justify-between lg:mt-2 gap-0 lg:gap-6">
                               <div className="w-full">
@@ -458,7 +481,7 @@ const Projects = () => {
                                 {
                                   featuredProject.tags.map((tag, index) => {
                                     return (
-                                      <div key={index} className="py-0.5 px-2 whitespace-nowrap border border-secondary-500 text-secondary-500 rounded-full text-[10px]">
+                                      <div key={index} className="py-0.5 px-2 whitespace-nowrap border border-secondary-500 text-secondary-500 rounded-xl text-[10px]">
                                         {featuredProject.tags[index]}
                                       </div>
                                     )
@@ -477,7 +500,21 @@ const Projects = () => {
                               })
                             }
                           </ul>
+
+
                         </div>
+
+                        {featuredProject.caseStudy && (
+                            <Link
+                              href={featuredProject.caseStudyLink}
+                              className="lg:hidden mt-3 inline-flex items-center gap-2 py-1.5 px-4 rounded-lg bg-amber-700 text-amber-50 text-sm font-semibold shadow-md shadow-amber-900/40 w-fit"
+                            >
+                              View case study
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0" aria-hidden="true">
+                                <path d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </Link>
+                          )}
                       </div>
 
               })

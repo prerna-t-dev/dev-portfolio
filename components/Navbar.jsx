@@ -13,11 +13,30 @@ export const withBasePath = (path) => `${basePath}${path}`;
 const Navbar = ({ lightBg = false }) => {
   const router = useRouter()
   const pathname = usePathname() // Get the current path
+  const [scrolled, setScrolled] = useState(false)
+
+  // Case study pages: white text on load (over hero), dark blue text + white bg when scrolled
+  useEffect(() => {
+    if (!lightBg) return
+    const onScroll = () => setScrolled(typeof window !== 'undefined' && window.scrollY > 20)
+    onScroll() // init
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [lightBg])
+
+  const isCaseStudyScrolled = lightBg && scrolled
   const logoGradientClass = lightBg
-    ? 'from-subtle-purple-dark via-subtle-pink-dark to-subtle-blue-dark bg-gradient-to-r bg-clip-text text-transparent'
+    ? (isCaseStudyScrolled ? 'text-[#0b192e]' : 'text-white/70')
     : 'from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent'
-  const navLinkClass = lightBg ? 'font-medium hover:opacity-80' : 'font-medium'
-  const hamburgerClass = lightBg ? 'bg-gradient-to-r from-subtle-purple-dark via-subtle-pink-dark to-subtle-blue-dark' : 'bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue'
+  const navLinkClass = lightBg
+    ? (isCaseStudyScrolled ? 'text-[#0b192e] font-medium hover:opacity-80' : 'text-white/70 font-medium hover:opacity-80')
+    : 'font-medium'
+  const navUlClass = lightBg
+    ? (isCaseStudyScrolled ? 'text-[#0b192e]' : 'text-white/70')
+    : 'from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent'
+  const hamburgerClass = lightBg
+    ? (isCaseStudyScrolled ? 'bg-[#0b192e]' : 'bg-white/70')
+    : 'bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue'
   const lenis = useLenis()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -62,7 +81,14 @@ const Navbar = ({ lightBg = false }) => {
   }, [isDrawerOpen])
 
   return (
-    <div id="pf--navbar" className="lg:fixed w-full top-0 left-0 px-6 lg:px-14 py-8 lg:py-10 z-[100]">
+    <div
+      id="pf--navbar"
+      className={`w-full top-0 left-0 px-6 lg:px-14 py-8 lg:py-10 z-[100] transition-[background-color,border-color,color] duration-200 ${
+        lightBg
+          ? `fixed ${scrolled ? 'bg-white/90 backdrop-blur-md text-[#0b192e] border-b border-[#0b192e]/5' : 'bg-transparent text-white/50 border-b border-transparent'}`
+          : 'lg:fixed'
+      }`}
+    >
       <div className="flex items-center justify-between font-general">
 
       {/* <Link href="/" scroll={true}>
@@ -95,7 +121,7 @@ const Navbar = ({ lightBg = false }) => {
 
 
         {/* Navigation Links - Desktop */}
-        <ul className={`hidden lg:flex gap-6 items-center font-medium ${lightBg ? 'from-subtle-purple-dark via-subtle-pink-dark to-subtle-blue-dark bg-gradient-to-r bg-clip-text text-transparent' : 'from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent'}`}>
+        <ul className={`hidden lg:flex gap-6 items-center font-medium ${navUlClass}`}>
           <li className="cursor-pointer">
             <Link href="/#pf--skills" onClick={(e) => handleScroll(e, 'pf--skills')} className={navLinkClass}>
               Technologies
@@ -130,19 +156,19 @@ const Navbar = ({ lightBg = false }) => {
           aria-label="Toggle menu"
         >
           <span
-            className={`w-5 h-0.5 ${hamburgerClass} transition-all duration-300 ${
-              isDrawerOpen ? 'rotate-45 translate-y-1.5' : ''
-            }`}
+            className={`w-5 h-0.5 transition-all duration-300 ${
+              isDrawerOpen && lightBg ? 'bg-[#0b192e]' : hamburgerClass
+            } ${isDrawerOpen ? 'rotate-45 translate-y-1.5' : ''}`}
           />
           <span
-            className={`w-5 h-0.5 ${hamburgerClass} transition-all duration-300 ${
-              isDrawerOpen ? 'opacity-0' : ''
-            }`}
+            className={`w-5 h-0.5 transition-all duration-300 ${
+              isDrawerOpen && lightBg ? 'bg-[#0b192e]' : hamburgerClass
+            } ${isDrawerOpen ? 'opacity-0' : ''}`}
           />
           <span
-            className={`w-5 h-0.5 ${hamburgerClass} transition-all duration-300 ${
-              isDrawerOpen ? '-rotate-45 -translate-y-1.5' : ''
-            }`}
+            className={`w-5 h-0.5 transition-all duration-300 ${
+              isDrawerOpen && lightBg ? 'bg-[#0b192e]' : hamburgerClass
+            } ${isDrawerOpen ? '-rotate-45 -translate-y-1.5' : ''}`}
           />
         </button>
 
@@ -154,18 +180,20 @@ const Navbar = ({ lightBg = false }) => {
           onClick={() => setIsDrawerOpen(false)}
         >
           <div
-            className={`absolute top-0 left-0 right-0 bg-[#0a0a0a] transition-transform duration-300 ease-out ${
-              isDrawerOpen ? 'translate-y-0' : '-translate-y-full'
-            }`}
+            className={`absolute top-0 left-0 right-0 transition-transform duration-300 ease-out ${
+              lightBg ? 'bg-white' : 'bg-[#0a0a0a]'
+            } ${isDrawerOpen ? 'translate-y-0' : '-translate-y-full'}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col pt-24 px-6">
+            <div className="flex flex-col pt-24 px-6 pb-16">
               <ul className="flex flex-col gap-8 font-medium">
                 <li>
                   <Link
                     href="/#pf--skills"
                     onClick={(e) => handleScroll(e, 'pf--skills')}
-                    className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
+                    className={`text-xl block hover:opacity-80 transition-opacity ${
+                      lightBg ? 'text-[#0b192e]' : 'text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text'
+                    }`}
                   >
                     Technologies
                   </Link>
@@ -174,7 +202,9 @@ const Navbar = ({ lightBg = false }) => {
                   <Link
                     href="/#pf--projects"
                     onClick={(e) => handleScroll(e, 'pf--projects')}
-                    className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
+                    className={`text-xl block hover:opacity-80 transition-opacity ${
+                      lightBg ? 'text-[#0b192e]' : 'text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text'
+                    }`}
                   >
                     Projects
                   </Link>
@@ -183,7 +213,9 @@ const Navbar = ({ lightBg = false }) => {
                   <Link
                     href="/#pf--awards"
                     onClick={(e) => handleScroll(e, 'pf--awards')}
-                    className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
+                    className={`text-xl block hover:opacity-80 transition-opacity ${
+                      lightBg ? 'text-[#0b192e]' : 'text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text'
+                    }`}
                   >
                     Awards
                   </Link>
@@ -192,7 +224,9 @@ const Navbar = ({ lightBg = false }) => {
                   <Link
                     href="/#pf--testimonials"
                     onClick={(e) => handleScroll(e, 'pf--testimonials')}
-                    className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
+                    className={`text-xl block hover:opacity-80 transition-opacity ${
+                      lightBg ? 'text-[#0b192e]' : 'text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text'
+                    }`}
                   >
                     Testimonials
                   </Link>
@@ -201,7 +235,9 @@ const Navbar = ({ lightBg = false }) => {
                   <Link
                     href="/#pf--contact"
                     onClick={(e) => handleScroll(e, 'pf--contact')}
-                    className="text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text text-xl block hover:opacity-80 transition-opacity"
+                    className={`text-xl block hover:opacity-80 transition-opacity ${
+                      lightBg ? 'text-[#0b192e]' : 'text-transparent bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue bg-clip-text'
+                    }`}
                   >
                     Contact
                   </Link>
