@@ -10,9 +10,14 @@ export const withBasePath = (path) => `${basePath}${path}`;
 
 
 
-const Navbar = () => {
+const Navbar = ({ lightBg = false }) => {
   const router = useRouter()
   const pathname = usePathname() // Get the current path
+  const logoGradientClass = lightBg
+    ? 'from-subtle-purple-dark via-subtle-pink-dark to-subtle-blue-dark bg-gradient-to-r bg-clip-text text-transparent'
+    : 'from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent'
+  const navLinkClass = lightBg ? 'font-medium hover:opacity-80' : 'font-medium'
+  const hamburgerClass = lightBg ? 'bg-gradient-to-r from-subtle-purple-dark via-subtle-pink-dark to-subtle-blue-dark' : 'bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue'
   const lenis = useLenis()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -75,14 +80,14 @@ const Navbar = () => {
       <Link
         href="/"
         scroll={true}
-        className="relative inline-block hover:opacity-80 transition"
+        className={`relative inline-block hover:opacity-80 transition ${logoGradientClass}`}
       >
-        <p className="font-semibold text-3xl leading-none flex items-center gap-1 from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent">
-          <span className="font-semibold text-xl text-secondary-700_">&lt;</span>
-          <span className="">pt</span>
-          <span className="font-semibold text-xl text-secondary-700_"> /&gt;</span>
+        <p className="font-semibold text-3xl leading-none flex items-center gap-1">
+          <span className="font-semibold text-xl">&lt;</span>
+          <span>pt</span>
+          <span className="font-semibold text-xl"> /&gt;</span>
         </p>
-        <span className="absolute text-[9px] font-medium top-[-6px] left-0 text-secondary-500">
+        <span className={`absolute text-[9px] font-medium top-[-6px] left-0 ${logoGradientClass}`}>
           Dev.
         </span>
       </Link>
@@ -90,29 +95,29 @@ const Navbar = () => {
 
 
         {/* Navigation Links - Desktop */}
-        <ul className="hidden lg:flex gap-6 items-center font-medium from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent">
+        <ul className={`hidden lg:flex gap-6 items-center font-medium ${lightBg ? 'from-subtle-purple-dark via-subtle-pink-dark to-subtle-blue-dark bg-gradient-to-r bg-clip-text text-transparent' : 'from-subtle-purple via-subtle-pink to-subtle-blue bg-gradient-to-r bg-clip-text text-transparent'}`}>
           <li className="cursor-pointer">
-            <Link href="/#pf--skills" onClick={(e) => handleScroll(e, 'pf--skills')}>
+            <Link href="/#pf--skills" onClick={(e) => handleScroll(e, 'pf--skills')} className={navLinkClass}>
               Technologies
             </Link>
           </li>
           <li className="cursor-pointer">
-            <Link href="/#pf--projects" onClick={(e) => handleScroll(e, 'pf--projects')}>
+            <Link href="/#pf--projects" onClick={(e) => handleScroll(e, 'pf--projects')} className={navLinkClass}>
               Projects
             </Link>
           </li>
           <li className="cursor-pointer">
-            <Link href="/#pf--awards" onClick={(e) => handleScroll(e, 'pf--awards')}>
+            <Link href="/#pf--awards" onClick={(e) => handleScroll(e, 'pf--awards')} className={navLinkClass}>
               Awards
             </Link>
           </li>
           <li className="cursor-pointer">
-            <Link href="/#pf--testimonials" onClick={(e) => handleScroll(e, 'pf--testimonials')}>
+            <Link href="/#pf--testimonials" onClick={(e) => handleScroll(e, 'pf--testimonials')} className={navLinkClass}>
               Testimonials
             </Link>
           </li>
           <li className="cursor-pointer">
-            <Link href="/#pf--contact" onClick={(e) => handleScroll(e, 'pf--contact')}>
+            <Link href="/#pf--contact" onClick={(e) => handleScroll(e, 'pf--contact')} className={navLinkClass}>
               Contact
             </Link>
           </li>
@@ -125,17 +130,17 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           <span
-            className={`w-5 h-0.5 bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue transition-all duration-300 ${
+            className={`w-5 h-0.5 ${hamburgerClass} transition-all duration-300 ${
               isDrawerOpen ? 'rotate-45 translate-y-1.5' : ''
             }`}
           />
           <span
-            className={`w-5 h-0.5 bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue transition-all duration-300 ${
+            className={`w-5 h-0.5 ${hamburgerClass} transition-all duration-300 ${
               isDrawerOpen ? 'opacity-0' : ''
             }`}
           />
           <span
-            className={`w-5 h-0.5 bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue transition-all duration-300 ${
+            className={`w-5 h-0.5 ${hamburgerClass} transition-all duration-300 ${
               isDrawerOpen ? '-rotate-45 -translate-y-1.5' : ''
             }`}
           />

@@ -98,6 +98,7 @@ const featuredProjects = [
   // },
   {
     number: '01',
+    awardWinner: false,
     projectLink: 'https://www.shopscoopstudio.com/',
     parallaxBgImg: 'bg-image-3.jpg',
     projectVideoClip: 'Scoop-Homepage.mp4',
@@ -120,6 +121,7 @@ const featuredProjects = [
   },
   {
     number: '02',
+    awardWinner: false,
     projectLink: 'https://www.moziwash.com/',
     parallaxBgImg: 'bg-image-1.jpg',
     projectVideoClip: 'Moziwash-Homepage.mp4',
@@ -155,6 +157,7 @@ const featuredProjects = [
   // },
   {
     number: '03',
+    awardWinner: false,
     projectLink: 'https://counterculturecoffee.com/',
     parallaxBgImg: 'bg-image-2.jpg',
     projectVideoClip: 'CCC-Homepage.mp4',
@@ -180,6 +183,7 @@ const featuredProjects = [
   },
   {
     number: '04',
+    awardWinner: false,
     projectLink: 'https://www.maiaestates.in/',
     parallaxBgImg: 'bg-image-4.jpg',
     projectVideoClip: 'MAIA-Homepage.mp4',
@@ -201,6 +205,7 @@ const featuredProjects = [
   },
   {
     number: '05',
+    awardWinner: false,
     projectLink: 'https://houndstoothsc.com/',
     parallaxBgImg: 'bg-image-5.jpg',
     projectVideoClip: 'HT-Homepage.mp4',
@@ -221,6 +226,7 @@ const featuredProjects = [
   },
   {
     number: '06',
+    awardWinner: true,
     projectLink: 'https://counterculturecoffee.com/pages/transparency-report-2023',
     parallaxBgImg: 'bg-image-6.jpg',
     projectVideoClip: 'CCC-TR.mp4',
@@ -387,6 +393,22 @@ const Projects = () => {
                         <div>
                           <Link href={featuredProject.projectLink} target="_blank" onMouseEnter={projectEnter} onMouseLeave={projectLeave}>
                             <div className="aspect-[16/13] lg:aspect-[1/0.9] bg-gradient-to-b from-[#b3a2c7] via-[#f2a1b3] to-[#0a0a0a] rounded-xl lg:rounded-3xl flex items-center justify-center px-4 lg:px-16 relative overflow-hidden">
+                              {featuredProject.awardWinner && (
+                                <div className="absolute top-3 left-3 lg:top-5 lg:left-5 z-20 flex items-center gap-2.5 py-2.5 pl-3.5 pr-4 rounded-full bg-black/75 border border-white/25 backdrop-blur-sm" aria-label="Award winner">
+                                  <span className="relative inline-flex shrink-0">
+                                    <svg viewBox="0 0 64 64" className="h-6 w-6 lg:h-7 lg:w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M20 10H44V24C44 31 38.5 36 32 36C25.5 36 20 31 20 24V10Z" fill="#F5B301" />
+                                      <path d="M20 14H14C14 20 16 24 20 26" stroke="#F5B301" strokeWidth="3" strokeLinecap="round" />
+                                      <path d="M44 14H50C50 20 48 24 44 26" stroke="#F5B301" strokeWidth="3" strokeLinecap="round" />
+                                      <rect x="28" y="36" width="8" height="8" fill="#F5B301" />
+                                      <rect x="22" y="44" width="20" height="6" rx="2" fill="#C58A00" />
+                                      <path d="M32 6L34.5 11H40L35.5 14L37.5 19L32 16L26.5 19L28.5 14L24 11H29.5L32 6Z" fill="#FFD54F" />
+                                    </svg>
+                                    <span className="absolute -top-0.5 -right-0.5 text-amber-300 text-[10px] leading-none" aria-hidden>✦</span>
+                                  </span>
+                                  <span className="text-sm lg:text-base font-semibold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-subtle-purple via-subtle-pink to-subtle-blue">Award winner</span>
+                                </div>
+                              )}
                               <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
                                 <Image
                                   src={`${basePath}/images/${featuredProject.parallaxBgImg}`}
