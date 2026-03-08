@@ -160,6 +160,8 @@ const featuredProjects = [
   {
     number: '03',
     awardWinner: false,
+    caseStudy: true,
+    caseStudyLink: '/case-study/counter-culture-coffee',
     projectLink: 'https://counterculturecoffee.com/',
     parallaxBgImg: 'bg-image-2.jpg',
     projectVideoClip: 'CCC-Homepage.mp4',

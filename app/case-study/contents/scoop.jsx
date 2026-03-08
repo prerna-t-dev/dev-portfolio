@@ -57,7 +57,7 @@ export default function ScoopContent({ basePath = "" }) {
               href="https://www.shopscoopstudio.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="pointer-events-auto inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-lg bg-[#0b192e] text-white text-base w-fit font-medium hover:bg-[#050d1a] transition-colors"
+              className="pointer-events-auto inline-flex animate-shimmer items-center justify-center gap-2 mt-6 rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-4 py-2 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-white hover:text-slate-300 w-fit"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -186,7 +186,7 @@ export default function ScoopContent({ basePath = "" }) {
       </motion.section>
 
       {/* Bra Quiz image — parallax */}
-      <div className="relative mt-6 aspect-[1.8/1] lg:aspect-[2.5/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
+      <div className="relative mt-6 max-w-5xl aspect-[1.8/1] lg:aspect-[2.5/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
         <Parallax speed={0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
           <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
             <Image
@@ -221,7 +221,7 @@ export default function ScoopContent({ basePath = "" }) {
       
 
       {/* Conversion-Focused Product Discovery */}
-      <div className="relative mt-6 aspect-[2.5/1] lg:aspect-[3.5/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
+      <div className="relative mt-6 max-w-5xl aspect-[2.5/1] lg:aspect-[3/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
         <Parallax speed={0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
           <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
             <Image
@@ -255,7 +255,7 @@ export default function ScoopContent({ basePath = "" }) {
       </motion.section>
 
       {/* Smart Size-Based Navigation */}
-      <div className="relative mt-6 aspect-[2.5/1] lg:aspect-[4/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
+      <div className="relative mt-6 max-w-5xl aspect-[2.5/1] lg:aspect-[3.6/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
         <Parallax speed={0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
           <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
             <Image
