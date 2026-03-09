@@ -18,7 +18,7 @@ export default function ScoopContent({ basePath = "" }) {
     <>
       <header className="mb-14 lg:mb-20">
         <div className="relative w-screen max-w-none left-1/2 -translate-x-1/2 aspect-[1.2/1.6] lg:aspect-[2.5/1] overflow-hidden mb-8">
-          <Parallax speed={0.4} className="absolute inset-0 w-full h-full overflow-hidden" id="scoop-hero-parallax">
+          <Parallax speed={-0.4} className="absolute inset-0 w-full h-full overflow-hidden" id="scoop-hero-parallax">
             <motion.div
               className="absolute inset-0 w-full h-full"
               initial={{ opacity: 0 }}
@@ -186,8 +186,13 @@ export default function ScoopContent({ basePath = "" }) {
       </motion.section>
 
       {/* Bra Quiz image — parallax */}
-      <div className="relative mt-6 max-w-5xl aspect-[1.8/1] lg:aspect-[2.5/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
-        <Parallax speed={0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
+      
+      <motion.section className="mb-14 lg:mb-20" {...fadeUp}>
+        <h3 className="text-heading-4 font-cabinet font-semibold leading-none text-[#0b192e] mb-4">
+          Proprietary Bra Size Quiz
+        </h3>
+        <div className="relative mt-6 max-w-5xl aspect-[1.8/1] lg:aspect-[2.5/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
+        <Parallax speed={-0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
           <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
             <Image
               src={`${basePath}/images/casestudy/scoop-cs-bra-quiz.png`}
@@ -199,10 +204,6 @@ export default function ScoopContent({ basePath = "" }) {
           </div>
         </Parallax>
       </div>
-      <motion.section className="mb-14 lg:mb-20" {...fadeUp}>
-        <h3 className="text-heading-4 font-cabinet font-semibold leading-none text-[#0b192e] mb-4">
-          Proprietary Bra Size Quiz
-        </h3>
         <div className="max-w-3xl space-y-4 text-base lg:text-lg text-[#0b192e]/90 leading-relaxed">
           <p>
             A core feature of the platform is a <span className="font-semibold">custom-built bra sizing quiz</span> that calculates a user’s <span className="font-semibold">ideal size</span> and recommends suitable products.
@@ -221,8 +222,13 @@ export default function ScoopContent({ basePath = "" }) {
       
 
       {/* Conversion-Focused Product Discovery */}
-      <div className="relative mt-6 max-w-5xl aspect-[2.5/1] lg:aspect-[3/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
-        <Parallax speed={0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
+      
+      <motion.section className="mb-14 lg:mb-20" {...fadeUp}>
+        <h3 className="text-heading-4 font-cabinet font-semibold leading-none text-[#0b192e] mb-4">
+          Conversion-Focused Product Discovery
+        </h3>
+        <div className="relative mt-6 max-w-5xl aspect-[2.5/1] lg:aspect-[3/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
+        <Parallax speed={-0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-discovery-parallax">
           <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
             <Image
               src={`${basePath}/images/casestudy/scoop-cs-navigation.png`}
@@ -234,10 +240,6 @@ export default function ScoopContent({ basePath = "" }) {
           </div>
         </Parallax>
       </div>
-      <motion.section className="mb-14 lg:mb-20" {...fadeUp}>
-        <h3 className="text-heading-4 font-cabinet font-semibold leading-none text-[#0b192e] mb-4">
-          Conversion-Focused Product Discovery
-        </h3>
         <p className="text-base lg:text-lg text-[#0b192e]/90 leading-relaxed max-w-3xl mb-6">
           To simplify navigating a complex sizing catalog, the store was structured around <span className="font-semibold">multiple browsing paths</span>. Customers can explore products:
         </p>
@@ -255,23 +257,24 @@ export default function ScoopContent({ basePath = "" }) {
       </motion.section>
 
       {/* Smart Size-Based Navigation */}
-      <div className="relative mt-6 max-w-5xl aspect-[2.5/1] lg:aspect-[3.6/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
-        <Parallax speed={0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-bra-quiz-parallax">
-          <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
-            <Image
-              src={`${basePath}/images/casestudy/scoop-cs-size-nav.png`}
-              alt="Scoop Studio bra sizing quiz"
-              width={1000}
-              height={1000}
-              className="w-full h-full object-cover object-center min-h-full"
-            />
-          </div>
-        </Parallax>
-      </div>
+      
       <motion.section className="mb-14 lg:mb-20" {...fadeUp}>
         <h3 className="text-heading-4 font-cabinet font-semibold leading-none text-[#0b192e] mb-4">
           Smart Size-Based Navigation
         </h3>
+        <div className="relative mt-6 max-w-5xl aspect-[2.5/1] lg:aspect-[3.6/1] rounded-2xl lg:rounded-3xl overflow-hidden mb-8 [contain:paint] shadow-[0_8px_24px_-4px_rgba(11,25,46,0.08)]">
+          <Parallax speed={-0.4} className="absolute inset-0 w-full h-[120%]" id="scoop-size-nav-parallax">
+            <div className="h-full w-full rounded-2xl lg:rounded-3xl overflow-hidden">
+              <Image
+                src={`${basePath}/images/casestudy/scoop-cs-size-nav.png`}
+                alt="Scoop Studio bra sizing quiz"
+                width={1000}
+                height={1000}
+                className="w-full h-full object-cover object-center min-h-full"
+              />
+            </div>
+          </Parallax>
+        </div>
         <p className="text-base lg:text-lg text-[#0b192e]/90 leading-relaxed max-w-3xl">
           I built a <span className="font-semibold">custom mega menu</span> organized by size, allowing shoppers to easily browse products within their range. The navigation includes logic that <span className="font-semibold">automatically disables unavailable sizes</span>, preventing frustration and improving browsing efficiency.
         </p>

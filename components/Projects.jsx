@@ -124,6 +124,8 @@ const featuredProjects = [
   {
     number: '02',
     awardWinner: false,
+    caseStudy: true,
+    caseStudyLink: '/case-study/moziwash',
     projectLink: 'https://www.moziwash.com/',
     parallaxBgImg: 'bg-image-1.jpg',
     projectVideoClip: 'Moziwash-Homepage.mp4',
