@@ -1,8 +1,8 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Hero from "../components/Hero";
 import Navbar from "@/components/Navbar";
 import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
 import { AuroraBackgroundDark } from "@/components/ui/AuroraBackgroundDark";
 import { StarBackground } from "@/components/ui/StarBackground";
 import CustomCursor from "@/components/CustomCursor";
@@ -10,6 +10,11 @@ import Awards from "../components/Awards";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+
+const Projects = dynamic(() => import("@/components/Projects"), {
+  ssr: false,
+  loading: () => <div className="mt-8 lg:mt-32 min-h-[60vh]" aria-hidden />,
+});
 
 
 export default function Home() {
