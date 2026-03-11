@@ -62,7 +62,7 @@ function LazyProjectVideo({ src, basePath, className, ...props }) {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="relative z-10 rounded-xl w-full object-cover"
           {...props}
         >
@@ -435,16 +435,18 @@ const Projects = () => {
                                   <span className="text-[10px] lg:text-xs font-semibold tracking-wide text-amber-50">case-study</span>
                                 </div>
                               )}
-                              <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
-                                <Image
-                                  src={`${basePath}/images/${featuredProject.parallaxBgImg}`}
-                                  className="w-full h-full object-cover"
-                                  width={800}
-                                  height={720}
-                                  sizes="(max-width: 1023px) 100vw, min(1920px, 60vw)"
-                                  alt={featuredProject.projectHeader}
-                                />
-                              </Parallax>
+                              {!showDesktop && (
+                                <Parallax speed={1.5} className={"absolute inset-0 w-full h-full scale-[1.6] origin-bottom"}>
+                                  <Image
+                                    src={`${basePath}/images/${featuredProject.parallaxBgImg}`}
+                                    className="w-full h-full object-cover"
+                                    width={800}
+                                    height={720}
+                                    sizes="(max-width: 1023px) 100vw, min(1920px, 60vw)"
+                                    alt={featuredProject.projectHeader}
+                                  />
+                                </Parallax>
+                              )}
 
                               {showDesktop ? (
                                 <LazyProjectVideo
